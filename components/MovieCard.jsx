@@ -15,7 +15,7 @@ const MovieCard = ({ data }) => {
           <h4 className="text-normal">Episode - {data.episode_id}</h4>
           <h2 class="text-white mb-3 font-bold text-3xl space-y-3">{data.title}</h2>
 
-          <Link href={`/movie?title=${data.title}`} class="flex w-fit justify-end text-slate-300 border-2 my-3 py-2 px-6 rounded-sm border-slate-100">
+          <Link href={`/movie?title=${data.title}`} class="flex w-fit justify-end hover:bg-white hover:text-black text-slate-300 border-2 my-3 py-2 px-6 rounded-sm border-slate-100">
             Read More
           </Link>
         </div>
