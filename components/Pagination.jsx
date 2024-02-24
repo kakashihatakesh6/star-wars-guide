@@ -1,15 +1,33 @@
-import Link from "next/link";
 import React, { useState } from "react";
 
-const Pagination = ({setCharData, set}) => {
+const Pagination = ({ setCharData, set }) => {
   const [page, setPage] = useState(1);
 
+  const handlePrevClick = async ({setFunction}) => {
+    if (page !== 1) {
+      setPage((page) => setPage(page - 1));
+    }
+  };
+  const handleNextClick = async () => {
+    console.log("Next")
+    setPage((page) => setPage(page + 1));
+    FetchData(page+1)
+  };
 
-  const handlePrevClick = () => {
-    
-  }
-  const handleNextClick = () => {
-
+  const FetchData = async (pageNo) => {
+    try {
+      setIsLoading(true)
+      const endpoint = `https://swapi.dev/api/people/?page=${pageNo}`;
+      const res = await axios.get(endpoint);
+      const data = res.data.results;
+      setCharData(data);
+      // setTotalItems(res.data.count);
+      // console.log(data)
+      setFunction(data)
+      setIsLoading(false)
+    } catch (error) {
+      console.log("Some Error Occurred!")
+    }
   }
 
 
@@ -17,24 +35,23 @@ const Pagination = ({setCharData, set}) => {
 
   return (
     <div className="container px-20 py-10 mx-auto">
+      
       <div className="w-full justify-between flex flex-row items-center">
-        <button disabled={page <= 1}
-          onClick={() => {handlePrevClick}}
-          class="flex w-fit justify-end text-slate-300 border-2 my-3 py-2 px-6 rounded-sm border-slate-100"
+        <button
+          disabled={page <= 1}
+          onClick={handlePrevClick}
+          className="flex w-fit justify-end text-slate-300 hover:bg-white hover:text-black border-2 my-3 py-2 px-6 rounded-sm border-slate-100"
         >
-         Previous
+          Previous
         </button>
 
         <div className="page">
           <span className="py-2 px-4 bg-slate-800 text-white">1</span>
         </div>
 
-
-
         <button
-          
-          onClick={() => handleNextClick}
-          class="flex w-fit justify-end text-slate-300 border-2 my-3 py-2 px-6 rounded-sm border-slate-100"
+          onClick={handleNextClick}
+          className="flex w-fit justify-end text-slate-300 hover:bg-white hover:text-black border-2 my-3 py-2 px-6 rounded-sm border-slate-100"
         >
           Next
         </button>
