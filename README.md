@@ -2,7 +2,7 @@
 
 This is a React-based Weather Web Application with support for multiple weather related data such as current temp, wind, 3 hour forecast etc.
 Visit the Application -
-https://nimbus-hub-weather.netlify.app/
+[https://nimbus-hub-weather.netlify.app/](https://star-wars-guide.vercel.app/)
 
 ## Table of Contents
 
@@ -33,7 +33,7 @@ https://nimbus-hub-weather.netlify.app/
 
 ## Demo
 
-
+![star-wars-img](https://github.com/kakashihatakesh6/star-wars-guide/assets/95236055/cc9730a4-ad88-436d-b2a9-e18abaf03c67)
 
 ## Installation
 
