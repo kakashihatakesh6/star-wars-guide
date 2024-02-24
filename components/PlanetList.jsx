@@ -1,29 +1,29 @@
-import React from 'react'
+/* eslint-disable @next/next/no-img-element */
+import React from "react";
+import PlanetCard from "./PlanetCard";
 
-import {isEmpty} from 'lodash';
-
-import PlanetCard from './PlanetCard';
-
-
-
-const PlanetList = ({ data, title }) => {
-    if (isEmpty(data)) {
-        return null;
-    }
+export const PlanetList = ({ data }) => {
   return (
-    <div className='px-4 md:px-12 mt-4 space-y-8'>
-        <div>
-            <p className='text-white text-md md:text-xl lg:text-2xl font-semibold'>
-                {title}
+    <div>
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 py-20 mx-auto">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h1 class="text-2xl font-medium title-font mb-4 text-white">
+              Planets
+            </h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              Explore the Planets of star Wars
             </p>
-            <div className="grid grid-cols-3 gap-4">
-                {data.map((movie) => (
-                    <PlanetCard key={movie.id} data={movie}/>
-                ))}
-            </div>
-        </div>
-    </div>
-  )
-}
+          </div>
 
-export default PlanetList
+          <div class="flex flex-wrap -m-4">
+            {data?.map((item, index) => (
+
+            <PlanetCard key={index} data={item} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
